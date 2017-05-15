@@ -242,13 +242,10 @@ Graphics::Graphics( HWNDKey& key )
 
 void Graphics::DrawCircle(int const x0,int const y0,int const dia,Color c){
 	int const rad=dia/2;
-	for(int iY=0; iY<=dia; iY++){
-		for(int iX=0; iX<=dia; iX++){
-			if((rad*rad) >= (iX*iX)+(iY*iY)){
+	for(int iY=-rad; iY<=rad; iY++){
+		for(int iX=-rad; iX<=rad; iX++){
+			if((rad*rad)>=(iX*iX)+(iY*iY)){
 				PutPixel(x0+iX+(rad),y0+iY+(rad),c);
-				PutPixel(x0-iX+(rad),y0+iY+(rad),c);
-				PutPixel(x0-iX+(rad),y0-iY+(rad),c);
-				PutPixel(x0+iX+(rad),y0-iY+(rad),c);
 			}
 		}
 	}
@@ -260,14 +257,11 @@ void Graphics::DrawCircle(int const x0,int const y0,int const dia, int const fat
 	if(fatness>rad){
 		fatnes=rad;
 	}
-	for(int iY=0; iY<=dia; iY++){
-		for(int iX=0; iX<=dia; iX++){
+	for(int iY=-rad; iY<=rad; iY++){
+		for(int iX=-rad; iX<=rad; iX++){
 			if((rad*rad)>=(iX*iX)+(iY*iY)&&
 			   !(((rad-fatnes)*(rad-fatnes))>=(iX*iX)+(iY*iY))){
 				PutPixel(x0+iX+(rad),y0+iY+(rad),c);
-				PutPixel(x0-iX+(rad),y0+iY+(rad),c);
-				PutPixel(x0-iX+(rad),y0-iY+(rad),c);
-				PutPixel(x0+iX+(rad),y0-iY+(rad),c);
 			}
 		}
 	}
