@@ -7,4 +7,4 @@ private:
 public:
 	FrameTimer();
 	float Mark();
-}
+};

@@ -66,7 +66,7 @@
     <ClInclude Include="SoundEffect.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="frame_timer.h">
+    <ClInclude Include="frametimer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -101,7 +101,7 @@
     <ClCompile Include="Sound.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="frame_timer.cpp">
+    <ClCompile Include="frametimer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
