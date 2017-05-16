@@ -9,6 +9,11 @@ public:
 	Vec2& operator+=(const Vec2& rhs) ;// lhs+rhs
 	Vec2 operator*(float rhs) const;
 	Vec2& operator*=(float rhs);
+	Vec2 operator-(const Vec2& rhs) const;
+	float operator->*(const Vec2& rhs);
+	float getLength(const Vec2& lhs,const Vec2& rhs);
+	float getLength(const Vec2& rhs);
+	float getLength();
 	float x;
 	float y;
 };
