@@ -349,13 +349,14 @@ gfx.PutPixel(11+x_int,19+y_int,0,0,0);
 gfx.PutPixel(12+x_int,19+y_int,0,0,0);
 }
 
-void Dude::Update(const Keyboard & kbd,float dt,const Vec2 mousePos,const bool isClicked){
-	if(isClicked){
-		pos.x=mousePos.x+pos.x;
-		pos.y=mousePos.y+pos.y;
+void Dude::Update(const Keyboard & kbd,float dt,const Vec2 mousePos,const float mouseSpeed){
+	if(mouseSpeed>.5f){
+		pos.x=mousePos.x*mouseSpeed+pos.x;
+		pos.y=mousePos.y*mouseSpeed+pos.y;
+		float nothing=0;
 	}
 	float speedThing=speed*dt;
-	speedThing=sqrtf(abs((speedThing*speedThing)-(speedThing*speedThing)));//todo:modulate speed
+	speedThing=speedThing/sqrtf(abs((speedThing*speedThing)+(speedThing*speedThing)));//todo:modulate speed
 	if(kbd.KeyIsPressed(VK_RIGHT)&&
 	   !(kbd.KeyIsPressed(VK_UP)!=
 		 kbd.KeyIsPressed(VK_DOWN))){

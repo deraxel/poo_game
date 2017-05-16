@@ -64,10 +64,16 @@ void Game::UpdateModel()
 	if( isStarted && !isGameOver )
 	{
 		Vec2 mousePos(0,0);
+		float mouseSpeed=0.0f;
 		if(isClicked){
-			mousePos.setPos((float)wnd.mouse.GetPosX(),(float)wnd.mouse.GetPosY());
+			mousePos.setPos((float)wnd.mouse.GetPosX()-(dude.GetWidth()/2) ,(float)wnd.mouse.GetPosY()-(dude.GetHeight()/2));
+			mouseSpeed=mousePos->*dude.getPos();
+			mouseSpeed=(mouseSpeed*mouseSpeedMax)/(mouseSpeed+(mouseSpeedMax*mouseSpeedLow));
+			if(mouseSpeed<1){
+				mouseSpeed=1.0f;
+			}
 		}
-		dude.Update( wnd.kbd,dt,mousePos.getNormDir(dude.getPos()),isClicked);
+		dude.Update( wnd.kbd,dt,mousePos.getNormDir(dude.getPos()),mouseSpeed);
 		dude.ClampToScreen();
 
 		for( int i = 0; i < nPoo; ++i )
