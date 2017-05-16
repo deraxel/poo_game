@@ -50,9 +50,23 @@ void Vec2::Normalize(){
 	*this=GetNormalized();
 }
 
+void Vec2::changeNormDir(const Vec2& rhs){
+	*this=getNormDir(rhs);
+}
+
+Vec2 Vec2::getNormDir(const Vec2& rhs)const{
+	Vec2 newVek(x-rhs.x,y-rhs.y);
+	return newVek*(1/newVek.getLength());
+}
+
 Vec2 Vec2::GetNormalized() const{
 	if(getLength()==0){
 		return *this;
 	}
 	return *this*(1/getLength());
+}
+
+void Vec2::setPos(float const xIn,float const yIn){
+	x=xIn;
+	y=yIn;
 }

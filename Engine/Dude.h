@@ -9,7 +9,7 @@ class Dude
 public:
 	void ClampToScreen();
 	void Draw( Graphics& gfx ) const;
-	void Update( const Keyboard& kbd,float dt );
+	void Update( const Keyboard& kbd,float dt,const Vec2 mousePos,const bool isClicked );
 	Vec2 getPos() const;
 	float GetWidth() const;
 	float GetHeight() const;

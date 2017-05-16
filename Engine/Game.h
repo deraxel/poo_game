@@ -59,10 +59,11 @@ private:
 	Dude dude;
 	Goal goal;
 	Meter meter;
-	static constexpr int nPoo = 10;
+	static constexpr int nPoo = 1;
 	Poo poos[nPoo];
 	bool isStarted = false;
 	bool isGameOver = false;
+	bool isClicked=false;
 	SoundEffect pickup = SoundEffect( { L"Sounds\\coin.wav" } );
 	Sound title = Sound( L"Sounds\\title.wav" );
 	SoundEffect fart = SoundEffect( 

@@ -51,12 +51,23 @@ void Game::Go()
 
 void Game::UpdateModel()
 {
+	if(wnd.mouse.LeftIsPressed()){
+		if(isClicked){
+			isClicked=false;
+		} else{
+			isClicked=true;
+		}
+	}
 	const float dt = ft.Mark();
 
 	goal.UpdateColor();
 	if( isStarted && !isGameOver )
 	{
-		dude.Update( wnd.kbd,dt );
+		Vec2 mousePos(0,0);
+		if(isClicked){
+			mousePos.setPos((float)wnd.mouse.GetPosX(),(float)wnd.mouse.GetPosY());
+		}
+		dude.Update( wnd.kbd,dt,mousePos.getNormDir(dude.getPos()),isClicked);
 		dude.ClampToScreen();
 
 		for( int i = 0; i < nPoo; ++i )
