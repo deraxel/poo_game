@@ -33,7 +33,7 @@ float Vec2::getLength(const Vec2& lhs,const Vec2& rhs){
 		((rhs.y-lhs.y)*(rhs.y-lhs.y)));
 }
 
-float Vec2::getLength(){
+float Vec2::getLength() const{
 	return sqrtf((x*x)+(y*y));
 }
 
@@ -44,4 +44,15 @@ float Vec2::operator->*(const Vec2& rhs){
 
 float Vec2::getLength(const Vec2& rhs){
 	return *this->*rhs;
+}
+
+void Vec2::Normalize(){
+	*this=GetNormalized();
+}
+
+Vec2 Vec2::GetNormalized() const{
+	if(getLength()==0){
+		return *this;
+	}
+	return *this*(1/getLength());
 }

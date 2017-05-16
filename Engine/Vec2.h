@@ -13,7 +13,9 @@ public:
 	float operator->*(const Vec2& rhs);
 	float getLength(const Vec2& lhs,const Vec2& rhs);
 	float getLength(const Vec2& rhs);
-	float getLength();
+	float getLength() const;
+	void Normalize();
+	Vec2 GetNormalized() const;
 	float x;
 	float y;
 };

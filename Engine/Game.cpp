@@ -38,12 +38,6 @@ Game::Game( MainWindow& wnd )
 	{
 		poos[i].Init( Vec2(xDist( rng ),yDist( rng )),Vec2(vDist( rng ),vDist( rng ) ));
 	}
-	Vec2 thing1=Vec2(3,10);
-	Vec2 thing2=Vec2(10,3);
-	float outputOp = thing1->*thing2;
-	float outputDualInput=thing1.getLength(thing1,thing2);
-	float outputOpBaseLen=thing2->*Vec2(0,0);
-	float outputBaseLen=thing2.getLength();
 	title.Play();
 }
 
