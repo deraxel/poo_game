@@ -59,7 +59,7 @@ private:
 	Dude dude;
 	Goal goal;
 	Meter meter;
-	static constexpr int nPoo = 10;
+	static constexpr int nPoo = 1;
 	static constexpr float mouseSpeedMax=10.0f;
 	static constexpr float mouseSpeedLow=20.0f;
 	Poo poos[nPoo];

@@ -350,46 +350,20 @@ gfx.PutPixel(12+x_int,19+y_int,0,0,0);
 }
 
 void Dude::Update(const Keyboard & kbd,float dt,const Vec2 mousePos,const float mouseSpeed){
-	if(mouseSpeed>.5f){
-		pos.x=mousePos.x*mouseSpeed+pos.x;
-		pos.y=mousePos.y*mouseSpeed+pos.y;
-		float nothing=0;
+	Vec2 vel(0.0f,0.0f);
+	if(kbd.KeyIsPressed(VK_RIGHT)){
+		vel.x+=1.0f;
 	}
-	float speedThing=speed*dt;
-	speedThing=speedThing/sqrtf(abs((speedThing*speedThing)+(speedThing*speedThing)));//todo:modulate speed
-	if(kbd.KeyIsPressed(VK_RIGHT)&&
-	   !(kbd.KeyIsPressed(VK_UP)!=
-		 kbd.KeyIsPressed(VK_DOWN))){
-		pos.x+=speed * dt;
-	} else if(kbd.KeyIsPressed(VK_RIGHT)&&
-			  kbd.KeyIsPressed(VK_UP)&&!kbd.KeyIsPressed(VK_DOWN)){
-		pos.x+=speedThing;
-		pos.y-=speedThing;
-	} else if(kbd.KeyIsPressed(VK_RIGHT)&&
-			  !kbd.KeyIsPressed(VK_UP)&&kbd.KeyIsPressed(VK_DOWN)){
-		pos.x+=speedThing;
-		pos.y+=speedThing;
+	if(kbd.KeyIsPressed(VK_UP)){
+		vel.y-=1.0f;
 	}
-	if(kbd.KeyIsPressed(VK_UP)&& !kbd.KeyIsPressed(VK_LEFT)&& !kbd.KeyIsPressed(VK_RIGHT)){
-		pos.y-=speed * dt;
+	if( kbd.KeyIsPressed( VK_DOWN))	{
+		vel.y+=1.0f;
 	}
-	if( kbd.KeyIsPressed( VK_DOWN)&&!kbd.KeyIsPressed(VK_LEFT)&&!kbd.KeyIsPressed(VK_RIGHT))	{
-		pos.y += speed * dt;
+	if(kbd.KeyIsPressed(VK_LEFT)){
+		vel.x-=1.0f;
 	}
-	if(kbd.KeyIsPressed(VK_LEFT)&&
-		   !(kbd.KeyIsPressed(VK_UP)!=
-			 kbd.KeyIsPressed(VK_DOWN))){
-		pos.x-=speed * dt;
-	} else if(kbd.KeyIsPressed(VK_LEFT)&&
-			  kbd.KeyIsPressed(VK_UP)&&!kbd.KeyIsPressed(VK_DOWN)){
-		pos.x-=speedThing;
-		pos.y-=speedThing;
-	} else if(kbd.KeyIsPressed(VK_LEFT)&&
-			  !kbd.KeyIsPressed(VK_UP)&&kbd.KeyIsPressed(VK_DOWN)){
-		pos.x-=speedThing;
-		pos.y+=speedThing;
-	}
-
+	pos=pos+(vel.GetNormalized()*speed*dt)+(mousePos*mouseSpeed);
 }
 
 Vec2 Dude::getPos() const{
